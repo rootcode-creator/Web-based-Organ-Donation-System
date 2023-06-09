@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <title>User Sign Up Page</title>
+    <link rel="icon" type="image/icon type" href="images/organ-donation-black-background.png">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container main">
+            <div class="row">
+                <div class="col-md-6 side-image">
+                    <!-------Image-------->
+                    <img src="images/white.png" alt="">
+                    <div class="text">
+
+                    </div>
+                </div>
+                <div class="col-md-6 right">
+                    <div class="input-box">
+                        <form action="signup.php" method="post">
+                            <header>
+                                <h1>Sign Up</h1>
+                            </header>
+                            <div class="input-field">
+                                <input type="text" class="input" oninvalid="this.setCustomValidity('Enter your Name')"
+                                    oninput="setCustomValidity('')" name="name" required>
+                                <label for="Name">Name</label>
+                            </div>
+
+                            <div class="dropdown">
+
+                                <label for="Gender"> </label>
+
+                                <select name="gender" oninvalid="this.setCustomValidity('Select your Gender')"
+                                    oninput="setCustomValidity('')" required>
+                                    <option value="">Choose your Gender  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="dropdown">
+
+                                <label for="blood"> </label>
+
+                                <select name="blood" oninvalid="this.setCustomValidity('Select your Blood Group')"
+                                    oninput="setCustomValidity('')" required>
+                                    <option value="">Choose your Blood Group &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                                    <option value="A+">A +</option>
+                                    <option value="A-">A -</option>
+                                    <option value="B+">B +</option>
+                                    <option value="B-">B -</option>
+                                    <option value="AB+">AB +</option>
+                                    <option value="AB-">AB -</option>
+                                    <option value="O+">O +</option>
+                                    <option value="O-">O -</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="input-field">
+                                <input type="number" step=".01" class="input"
+                                    oninvalid="this.setCustomValidity('Enter your Height')"
+                                    oninput="setCustomValidity('')" name="height" required>
+                                <label for="Height">Height</label>
+                            </div>
+
+
+
+                            <div class="input-field">
+                                <input type="tel" class="input" pattern="[0-9]{3}[0-9]{8}"
+                                    oninvalid="this.setCustomValidity('Enter your Phone Number Format: 01301701410')"
+                                    oninput="setCustomValidity('')" name="phone" required>
+                                <label for="Phone Number">Phone Number</label>
+                            </div>
+
+
+
+
+
+
+                            <div class="input-field">
+                                <input type="password" class="input"
+                                    oninvalid="this.setCustomValidity('Fill your Password')"
+                                    oninput="setCustomValidity('')" name="password" required>
+                                <label for="Password">Password</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="submit" class="submit" value="Sign Up" name="submit">
+
+                            </div>
+                            <div class="signin">
+                                <span>One of us? <a href="signin.html">Sign In here</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
