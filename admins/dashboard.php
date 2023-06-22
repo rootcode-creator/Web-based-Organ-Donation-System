@@ -47,44 +47,46 @@ if (isset($_SESSION['name'])) {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
-					<a href="#" class="btn btn-info btn-block  " style="width:180px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#myInformation"><i class="fa-solid fa-circle-info"></i> My Information</a>
+					<a href="#" class="btn btn-info btn-block  " style="width:180px;border-radius:0%;" data-toggle="modal" data-target="#myInformation"><i class="fa-solid fa-circle-info"></i> My Information</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="#" class="btn btn-success btn-block" style="width:180px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#AssignDoctorsModal"><i class="fa-solid fa-suitcase-medical"></i> Assign Doctors</a>
+					<a href="#" class="btn btn-success btn-block" style="width:230px;border-radius:0%;" data-toggle="modal" data-target="#AssignDoctorsModal"><i class="fa-solid fa-suitcase-medical"></i> Assign Doctors</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="#" class="btn btn-warning btn-block" style="width:180px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#addPostModal"><i class="fa-sharp fa-solid fa-spinner"></i> Pending</a>
+					<a href="#" class="btn btn-warning btn-block" style="width:180px;border-radius:0%;" data-toggle="modal" data-target="#addPostModal"><i class="fa-sharp fa-solid fa-spinner"></i> Pending</a>
 				</div>
 				<div class="col-md-2">
-					<a href="#" class="btn btn-success btn-block" style="width:180px;border-radius:0%;margin-right: 15px;"  data-toggle="modal" data-target="#addCateModal"><i class="fa-solid fa-thumbs-up"></i> Approved</a>
-				</div>
-				<div class="col-md-2">
-					<a href="#" class="btn btn-danger btn-block" style="width:180px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#addRejModal"><i class="fa-sharp fa-solid fa-ban"></i> Rejected</a>
-				</div>
-				<div class="col-md-2">
-					<a href="#" class="btn btn-info btn-block" style="width:230px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#totalUserModel"><i class="fas fa-users"></i> Total Applications</a>
+					<a href="#" class="btn btn-success btn-block" style="width:180px;border-radius:0%;"  data-toggle="modal" data-target="#addCateModal"><i class="fa-solid fa-thumbs-up"></i> Approved</a>
+
 				</div>
 				<br><br>
+				<div class="col-md-2">
+					<a href="#" class="btn btn-danger btn-block" style="width:180px;border-radius:0%;" data-toggle="modal" data-target="#addRejModal"><i class="fa-sharp fa-solid fa-ban"></i> Rejected</a>
+				</div>
+				<div class="col-md-2">
+					<a href="#" class="btn btn-info btn-block" style="width:230px;border-radius:0%;" data-toggle="modal" data-target="#totalUserModel"><i class="fas fa-users"></i> Total Applications</a>
+				</div>
+				
 				<div class="col-md-2">
 					<a href="#" class="btn btn-primary btn-block" style="width:180px;border-radius:0%;" data-toggle="modal" data-target="#addDocModal"><i class="fa-solid fa-user-plus"></i> Add Doctors</a>
 				</div>
 
 				<br><br>
 				<div class="col-md-2">
-					<a href="#" class="btn btn-info btn-block" style="width:180px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#viewUserModal"><i class="fa-regular fa-eye"></i> View Users</a>
+					<a href="#" class="btn btn-info btn-block" style="width:180px;border-radius:0%;" data-toggle="modal" data-target="#viewUserModal"><i class="fa-regular fa-eye"></i> View Users</a>
 				</div>
 				<br><br>
 
 				<div class="col-md-2">
-					<a href="#" class="btn btn-info btn-block" style="width:180px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#viewDoctorsModal"><i class="fa-sharp fa-solid fa-eye"></i> View Doctors</a>
+					<a href="#" class="btn btn-info btn-block" style="width:180px;border-radius:0%;" data-toggle="modal" data-target="#viewDoctorsModal"><i class="fa-sharp fa-solid fa-eye"></i> View Doctors</a>
 				</div>
 
 				
 
 				<div class="col-md-2">
-					<a href="#" class="btn btn-primary btn-block" style="width:180px;border-radius:0%;margin-right: 15px;" data-toggle="modal" data-target="#PharmacyModal"><i class="fa-solid fa-pills"></i> Add Pharmacy</a>
+					<a href="#" class="btn btn-primary btn-block" style="width:230px;border-radius:0%;" data-toggle="modal" data-target="#PharmacyModal"><i class="fa-solid fa-pills"></i> Add Pharmacy</a>
 				</div>
 
 			</div>
