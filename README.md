@@ -21,10 +21,8 @@
 
 </ul>
 
-<br><br>
+<br>
 
 
-
-However, a live demonstration of this project is hosted on my website. The live demonstration of this project is on the following link
-
+However, a live demonstration of this project is hosted on my website. The live demonstration of this project is on the following link https://cse299.kawserahmad.xyz
 
