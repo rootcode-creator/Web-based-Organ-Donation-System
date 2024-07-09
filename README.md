@@ -13,7 +13,7 @@
 
 <br>
 
-<li><b>Doctor:</b> Analyse each case and approve or reject each case based on reason, necessity and individual case analysis.</li>
+<li><b>Doctor:</b> Analyze each case and approve or reject each case based on reason, necessity and individual case.</li>
 
 <br>
 
