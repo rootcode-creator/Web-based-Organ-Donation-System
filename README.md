@@ -24,5 +24,5 @@
 <br>
 
 
-However, a live demonstration of this project is hosted on my website. The live demonstration of this project is on the following link https://kawserahmad.tech
+However, a live demonstration of this project is hosted on my website. The live demonstration of this project is on the following link https://kawserahmed.tech
 
