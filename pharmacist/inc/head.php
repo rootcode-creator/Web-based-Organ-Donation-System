@@ -10,6 +10,6 @@
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
   <title>Organ Donation Management</title>
-  <link rel="icon" type="image/icon type" href="images/organ-donation-black-background.png">
+  <link rel="icon" type="image/icon type" href="../../Image/favicon.png">
 </head>
 <?php include 'inc/config.php'; ?>

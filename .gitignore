@@ -1,0 +1,3 @@
+# Ignore the config.php file in all directories
+config.php
+**/config.php

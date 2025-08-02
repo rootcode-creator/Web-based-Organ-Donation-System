@@ -1,7 +1,7 @@
 
 
 <?php
-include('inc/head.php');
+include('inc/config.php');
 session_start();
 
 if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESSION['blood']) && isset($_SESSION['gender'])) {

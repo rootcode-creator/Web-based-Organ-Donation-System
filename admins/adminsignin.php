@@ -1,19 +1,15 @@
 <?php
-include('inc/head.php'); 
+; 
 include 'inc/config.php';
 $username = hash('sha256',$_POST['username']);
 $password = hash('sha256',$_POST['password']);
 
-$host = "127.0.0.1";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "user";
-$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
+
 
 
 $s = " select * from admins where username = '$username' && password = '$password'";
 
-$result = mysqli_query($conn, $s);
+$result = mysqli_query($con, $s);
 $num = mysqli_num_rows($result);
 $userdata = mysqli_fetch_assoc($result);
 error_reporting(0);

@@ -149,7 +149,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone'])) {
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<!-- <p class="lead">&copy; <?php echo date("Y") ?> </p> -->
+				<p style = "color: #CCCCFF; font-weight: bold;" >&copy; Kawser Ahmad, <?php echo date("Y");?></P>
 				</div>
 			</div>
 		</div>
@@ -280,9 +280,9 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone'])) {
 
 							<th>Quantity</th>
 
-							<th>Added Date</th>
+							<th>Stock Additon Date</th>
 
-							<th>Quantity Sold Now</th>
+							<th>Quantity Sold / Added</th>
 
 							<th>Action</th>
 
@@ -414,7 +414,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone'])) {
 						</thead>
 						<tbody>
 							<?php
-							// $sql = "SELECT * FROM ordermedicine where orderstatus = 0 AND commentexist != 1 ORDER BY orderId ASC";
+							// $sql = "SELECT * FROM ordermedicine where orderstatus = '0' AND commentexist != 1 ORDER BY orderId ASC";
 							
 							$sql = "SELECT orderId,application_id,patientName,patientPhone,patientGender,patientBlood,doctor,prescription_written_date,prescription,orderstatus,individualPrice,totalPrice,userResponse,pharmacistcomment,commentexist,usercomment,usercommentexist,deliveryStatus,
 							ordermedicine.med1name,ordermedicine.med2name,ordermedicine.med3name,ordermedicine.med4name,ordermedicine.med5name,ordermedicine.med6name,ordermedicine.med7name,ordermedicine.med8name,ordermedicine.med9name,ordermedicine.med10name,ordermedicine.med11name,ordermedicine.med12name,
@@ -429,7 +429,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone'])) {
 							med9quantity,'\n',
 							med10quantity,'\n',
 							med11quantity,'\n',
-							med12quantity ) AS quantity  FROM ordermedicine where orderstatus = 0 AND commentexist != 1 ORDER BY orderId ASC";
+							med12quantity ) AS quantity  FROM ordermedicine where orderstatus = '0' AND commentexist IS NULL ORDER BY orderId ASC";
 
 							$que = mysqli_query($con, $sql);
 							$cnt = 1;

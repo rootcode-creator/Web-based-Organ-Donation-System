@@ -1,7 +1,7 @@
 
 
 <?php
-include('inc/head.php');
+include('inc/config.php');
 session_start();
 
 if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESSION['blood']) && isset($_SESSION['gender'])) {
@@ -268,10 +268,10 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 
 
 
-			$sql = "UPDATE ordermedicine SET userResponse = 2 where orderId = '$Order_id' ";
+			$sql = "UPDATE ordermedicine SET userResponse = '2' where orderId = '$Order_id' ";
 
 			$run = mysqli_query($con, $sql);
-			$sql2 = "UPDATE prescription  SET ordered = 0  where id = '$id' ";
+			$sql2 = "UPDATE prescription  SET ordered = '0'  where id = '$id' ";
 
 			$run2 = mysqli_query($con, $sql2);
 		}

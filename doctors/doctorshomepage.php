@@ -1,18 +1,15 @@
 <?php
-
-use function PHPSTORM_META\type;
-
-include('inc/head.php');
 session_start();
 
-// if (isset($_SESSION['doctor_signin'] )&& isset($_SESSION['password'])  ) {
-// } else {
-// 	header('location:signin.html');
-// }
+if (!(isset($_SESSION['name']) && isset($_SESSION['phone'])) ) {
+	header('location:doctorsignin.html');
+} else {
+	
+	// echo "<script> alert('Please login to access the doctor dashboard'); window.location.href='doctorsignin.html'; </script>";
 
-// 
+	}
 
-
+include('inc/head.php');
 ?>
 
 <body>
@@ -22,9 +19,10 @@ session_start();
 			<button class="navbar-toggler toggler-right" data-target="#mynavbar" data-toggle="collapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a href="#" class="navbar-brand mr-3">Organ Donation Web app</a>
+			
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="navbar-nav">
+					<a href="#" class="navbar-brand mr-3">Organ Donation Web app</a>
 					<li class="nav-item px-2"><a href="#" class="nav-link active">DOCTORS NAME → <?php echo strtoupper($_SESSION['name']) ?> || PHONE → <?php echo $_SESSION['phone'] ?></a></li>
 
 				</ul>
@@ -32,7 +30,7 @@ session_start();
 					<li class="nav-item dropdown mr-3">
 
 					<li class="nav-item">
-						<a href="logout.php" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+						<a href="logout.php" class="btn btn-xs nav-link logout"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i> Logout</a>
 					</li>
 					</li>
 				</ul>
@@ -63,9 +61,7 @@ session_start();
 				</div>
 
 
-				<!-- <div class="col-md-3">
-					<a href="#" class="btn btn-primary btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#addPostModal"><i class="fa-sharp fa-solid fa-plus"></i> Apply For Organ</a>
-				</div> -->
+			
 
 				<div class="col-md-3">
 					<a href="#" class="btn btn-warning btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#addCateModal"><i class="fa-sharp fa-solid fa-spinner"></i> Pendings</a>
@@ -78,16 +74,7 @@ session_start();
 
 
 
-				<!-- <div class="col-md-3">
-					<a href="#" class="btn btn-success btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#approveModal"><i class="fa-solid fa-thumbs-up"></i> Approved Applications</a>
-				</div> -->
-
-
-
-
-				<!-- <div class="col-md-3">
-					<a href="#" class="btn btn-success btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#rejectModal"><i class="fa-solid fa-skull-crossbones"></i> Rejected Applications</a>
-				</div> -->
+				
 
 			</div>
 		</div>
@@ -148,13 +135,15 @@ session_start();
 			</div>
 		</div>
 	</section>
+
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 	<!----Section3 footer ---->
 	<section id="main-footer" class="text-center text-white bg-inverse mt-4 p-4">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<!-- <p class="lead">&copy; <?php echo date("Y") ?> </p> -->
+				<p style = "color: #CCCCFF; font-weight: bold;" >&copy; Kawser Ahmad, <?php echo date("Y");?></P>
 				</div>
 			</div>
 		</div>
@@ -229,46 +218,6 @@ session_start();
 
 
 
-
-	<!-- Creating Modal -->
-	<!-- Header Post -->
-	<div class="modal fade" id="addPostModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-primary text-white">
-					<div class="modal-title">
-						<h5>Request for organ</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<form action="" method="post">
-						<div class="form-group">
-
-							<input type="hidden" name="name" class="form-control" value="<?php echo $_SESSION['name'] ?>">
-							<input type="hidden" name="phone_number" value="<?php echo $_SESSION['phone_number'] ?>">
-							<input type="hidden" name="gender" value="<?php echo $_SESSION['gender'] ?>">
-							<input type="hidden" name="blood" value="<?php echo $_SESSION['blood'] ?>">
-
-						</div>
-						<div class="form-group">
-							<label class="form-control-label">Application Date</label>
-							<input type="date" name="application_date" class="form-control" required />
-						</div>
-						<div class="form-group">
-							<label>Reason For Application</label>
-							<textarea required name="application_reason" class="form-control"></textarea>
-						</div>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-danger" style="border-radius:0%;" data-dismiss="modal">Close</button>
-					<input type="hidden" name="status" value="0">
-					<input type="submit" class="btn btn-success" style="border-radius:0%;" name="apply" value="Apply">
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
 	<!--Modal Category-->
 	<div class="modal fade" id="addCateModal">
 		<div class="modal-dialog modal-lg">
@@ -292,7 +241,7 @@ session_start();
 						</thead>
 						<tbody>
 							<?php
-							$sql = "SELECT * FROM organ WHERE (recomendationWritten = '0' or recomendationWritten = '')  and doctor_info='" . $_SESSION['phone'] . "'";
+							$sql = "SELECT * FROM organ WHERE (recomendationWritten = '0' or recomendationWritten IS NULL)  and doctor_info='" . $_SESSION['phone'] . "'";
 							$que = mysqli_query($con, $sql);
 							$cnt = 1;
 							while ($result = mysqli_fetch_assoc($que)) {
@@ -380,7 +329,7 @@ session_start();
 						</thead>
 						<tbody>
 							<?php
-							$sql = "SELECT * FROM organ WHERE status = 1 AND prescriptionwritten = '' AND doctor_info = '" . $_SESSION['phone'] . "'";
+							$sql = "SELECT * FROM organ WHERE status = 1 AND prescriptionwritten IS NULL AND doctor_info = '" . $_SESSION['phone'] . "'";
 							$que = mysqli_query($con, $sql);
 							$cnt = 1;
 							while ($result = mysqli_fetch_assoc($que)) {
@@ -441,128 +390,8 @@ session_start();
 
 
 
-	<!-- User Modal -->
-	<div class="modal fade" id="approveModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-success text-white">
-					<div class="modal-title">
-						<h5>Approved Applications</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<th>#</th>
-							<th>Name</th>
-							<th>Phone Number</th>
-							<th>Gender</th>
-							<th>Application Date</th>
-							<th>Doctor Information</th>
+	
 
-
-							<th>Status</th>
-						</thead>
-						<tbody>
-							<?php
-							$sql = "SELECT * FROM organ WHERE status = 1 AND phone_number='" . $_SESSION['phone_number'] . "'";
-							$que = mysqli_query($con, $sql);
-							$cnt = 1;
-							while ($result = mysqli_fetch_assoc($que)) {
-							?>
-
-
-								<tr>
-									<td><?php echo $cnt; ?></td>
-									<td><?php echo $result['name']; ?></td>
-									<td><?php echo $result['phone_number']; ?></td>
-									<td><?php echo $result['gender']; ?></td>
-									<td><?php $timestamp = strtotime($result['application_date']);
-										echo date('d-M-y', $timestamp); ?></td>
-
-									<td><?php echo nl2br($result['doctor_info']); ?></td> <!-- Fetch with next line -->
-									<td>
-									<?php
-									if ($result['status'] == 0) {
-										echo "<span class='badge badge-warning'>Pending</span>";
-									} else {
-										echo "<span class='badge badge-success'>Approved</span>";
-									}
-									$cnt++;
-								}
-									?>
-									</td>
-								</tr>
-
-						</tbody>
-					</table>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- User Modal -->
-	<div class="modal fade" id="rejectModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-success text-white">
-					<div class="modal-title">
-						<h5>Rejected Applications</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<th>#</th>
-							<th>Name</th>
-							<th>Phone Number</th>
-							<th>Gender</th>
-							<th>Blood Group</th>
-							<th>Application Date</th>
-
-							<th>Status</th>
-						</thead>
-						<tbody>
-							<?php
-							$sql = "SELECT * FROM organ WHERE status = 2 AND phone_number='" . $_SESSION['phone_number'] . "'";
-							$que = mysqli_query($con, $sql);
-							$cnt = 1;
-							while ($result = mysqli_fetch_assoc($que)) {
-							?>
-
-
-								<tr>
-									<td><?php echo $cnt; ?></td>
-									<td><?php echo $result['name']; ?></td>
-									<td><?php echo $result['phone_number']; ?></td>
-									<td><?php echo $result['gender']; ?></td>
-									<td><?php echo $result['blood']; ?></td>
-									<td><?php $timestamp = strtotime($result['application_date']);
-										echo date('d-M-y', $timestamp); ?></td>
-
-									<td>
-									<?php
-									if ($result['status'] == 0) {
-										echo "<span class='badge badge-warning'>Pending</span>";
-									} else if ($result['status'] == 2) {
-										echo "<span class='badge badge-danger'>Rejected</span>";
-									}
-									$cnt++;
-								}
-									?>
-									</td>
-								</tr>
-
-						</tbody>
-					</table>
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 
 	<script src="js/jquery.min.js"></script>
@@ -575,31 +404,3 @@ session_start();
 </body>
 
 </html>
-<?php
-if (isset($_POST['apply'])) {
-	$name = $_POST['name'];
-	$phone_number = $_POST['phone_number'];
-	$gender = $_POST['gender'];
-	$blood = $_POST['blood'];
-	$application_date = $_POST['application_date'];
-	$application_reason = $_POST['application_reason'];
-	$status = $_POST['status'];
-
-	$sql = "INSERT INTO organ(name,phone_number,gender,blood,application_date,application_reason,status)VALUES('$name','$phone_number','$gender','$blood','$application_date','$application_reason','$status')";
-
-	$run = mysqli_query($con, $sql);
-
-	if ($run == true) {
-
-		echo "<script> 
-					alert('Applied successfully, Please wait for approval status');
-					window.open('dashboard.php','_self');
-				  </script>";
-	} else {
-		echo "<script> 
-			alert('Failed To Apply');
-			</script>";
-	}
-}
-
-?>

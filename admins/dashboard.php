@@ -155,7 +155,7 @@ if (isset($_SESSION['name'])) {
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<!-- <p class="lead">&copy; <?php echo date("Y") ?> </p> -->
+				<p style = "color: #CCCCFF; font-weight: bold;" >&copy; Kawser Ahmad, <?php echo date("Y");?></P>
 				</div>
 			</div>
 		</div>
@@ -266,7 +266,7 @@ if (isset($_SESSION['name'])) {
 									<td>
 										<?php
 
-										if ($result['doctor_recommendation'] == 0) {
+										if ($result['doctor_recommendation'] == '0') {
 
 											echo "<span class='badge badge-primary'>You can approve this application</span>";
 										} else if ($result['doctor_recommendation'] == 1) {
@@ -719,8 +719,7 @@ if (isset($_SESSION['name'])) {
 											<?php
 
 
-											$con = mysqli_connect("localhost", "root", "", "user");
-
+											
 
 											$sql = "SELECT * FROM doctors";
 											$all_categories = mysqli_query($con, $sql);
@@ -860,17 +859,13 @@ if (isset($_POST['adddoctors'])) {
 		$hospital = $_POST['hospital'];
 		$password = hash('sha256', $_POST['password']);
 
-		$host = "127.0.0.1";
-		$dbUsername = "root";
-		$dbPassword = "";
-		$dbName = "user";
-		$conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-		if ($conn->connect_error) {
+		
+		if ($con->connect_error) {
 			die('Could not connect to the database.');
 		} else {
 			$User_data = "SELECT reg_number FROM doctors WHERE reg_number = ? LIMIT 1";
 			$Insert = "INSERT INTO doctors (name,reg_number,phone,hospital,password) values(?,?,?,?, ?)";
-			$stmt = $conn->prepare($User_data);
+			$stmt = $con->prepare($User_data);
 			$stmt->bind_param("s", $reg_number);
 			$stmt->execute();
 			$stmt->bind_result($resultreg_number);
@@ -879,7 +874,7 @@ if (isset($_POST['adddoctors'])) {
 			$rnum = $stmt->num_rows;
 			if ($rnum == 0) {
 				$stmt->close();
-				$stmt = $conn->prepare($Insert);
+				$stmt = $con->prepare($Insert);
 				$stmt->bind_param("sssss", $name, $reg_number, $phone, $hospital, $password);
 				mysqli_report(MYSQLI_REPORT_OFF);
 				if ($stmt->execute()) {
@@ -893,7 +888,7 @@ if (isset($_POST['adddoctors'])) {
 				echo "<script> alert('Someone already registered using this registration number or phone number'); window.location.href='dashboard.php'; </script>";
 			}
 			$stmt->close();
-			$conn->close();
+			$con->close();
 		}
 	}
 }

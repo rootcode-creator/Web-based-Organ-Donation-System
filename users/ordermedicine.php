@@ -1,5 +1,5 @@
 <?php
-include('inc/head.php');
+include('inc/config.php');
 session_start();
 
 if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESSION['blood']) && isset($_SESSION['gender'])) {
@@ -66,7 +66,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 		
 		$sql2 = "Update prescription SET ordered = 1 where id = '$application_id' ";
 
-		$sql3 = "Update ordermedicine SET orderstatus = 0 where application_id = '$application_id' ";
+		$sql3 = "Update ordermedicine SET orderstatus = '0',  userResponse = '0' where application_id = '$application_id' ";
 
 		$run = mysqli_query($con, $sql);
 		$run2 = mysqli_query($con, $sql2);

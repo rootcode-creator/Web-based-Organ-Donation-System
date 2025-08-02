@@ -1,4 +1,6 @@
 <?php
+include('inc/config.php');
+
 if (isset($_POST['submit'])) {
     if (isset($_POST['name']) &&isset($_POST['username']) && isset($_POST['password'])) {
         
@@ -7,18 +9,14 @@ if (isset($_POST['submit'])) {
             $password = hash('sha256',$_POST['password']);
 
 
-        $host = "127.0.0.1";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "user";
-        $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-        if ($conn->connect_error) {
+      
+        if ($con->connect_error) {
             die('Could not connect to the database.');
         }
         else {
             $User_data = "SELECT username FROM admins WHERE username = ? LIMIT 1";
             $Insert = "INSERT INTO admins (name, username,password) values(?, ?, ?)";
-            $stmt = $conn->prepare($User_data);
+            $stmt = $con->prepare($User_data);
             $stmt->bind_param("s",$username);
             $stmt->execute();
             $stmt->bind_result($resultusername);
@@ -27,7 +25,7 @@ if (isset($_POST['submit'])) {
             $rnum = $stmt->num_rows;
             if ($rnum == 0) {
                 $stmt->close();
-                $stmt = $conn->prepare($Insert);
+                $stmt = $con->prepare($Insert);
                 $stmt->bind_param("sss",$name, $username, $password);
                 mysqli_report(MYSQLI_REPORT_OFF);
                 if ($stmt->execute()) {
@@ -48,7 +46,7 @@ if (isset($_POST['submit'])) {
                 
             }
             $stmt->close();
-            $conn->close();
+            $con->close();
         }
     }
     else {

@@ -1,6 +1,6 @@
-
-
 <?php
+include('inc/config.php');
+
 if (isset($_POST['add'])) {
     if (isset($_POST['medicinename']) && isset($_POST['quantity']) && isset($_POST['manufacturer']) ) {
 
@@ -13,18 +13,14 @@ if (isset($_POST['add'])) {
 		
 		
 
-        $host = "127.0.0.1";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "user";
-        $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-        if ($conn->connect_error) {
+        
+        if ($con->connect_error) {
             die('Could not connect to the database.');
         }
         else {
             $User_data = "SELECT medicinename FROM stockmedicine WHERE medicinename = ? LIMIT 1";
             $Insert = "INSERT INTO stockmedicine(medicinename,dose,quantity,manufacturer) values(?, ?,?,?)";
-            $stmt = $conn->prepare($User_data);
+            $stmt = $con->prepare($User_data);
             $stmt->bind_param("s",$medicinename);
             $stmt->execute();
             $stmt->bind_result($resultmedicinename);
@@ -33,7 +29,7 @@ if (isset($_POST['add'])) {
             $rnum = $stmt->num_rows;
             if ($rnum == 0) {
                 $stmt->close();
-                $stmt = $conn->prepare($Insert);
+                $stmt = $con->prepare($Insert);
                 $stmt->bind_param("ssis",$medicinename,$dose,$quantity,$manufacturer);
                 mysqli_report(MYSQLI_REPORT_OFF);
                 if ($stmt->execute()) {
@@ -54,7 +50,7 @@ if (isset($_POST['add'])) {
                 
             }
             $stmt->close();
-            $conn->close();
+            $con->close();
         }
     }
     else {

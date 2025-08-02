@@ -1,5 +1,5 @@
 <?php
-include('inc/head.php');
+
 session_start();
 
 if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESSION['blood']) && isset($_SESSION['gender'])) {
@@ -7,6 +7,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 	header('location:signin.html');
 }
 
+include('inc/head.php');
 ?>
 
 <body>
@@ -158,7 +159,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<!-- <p class="lead">&copy; <?php echo date("Y") ?> </p> -->
+				<p style = "color: #CCCCFF; font-weight: bold;" >&copy; Kawser Ahmad, <?php echo date("Y");?></P>
 				</div>
 			</div>
 		</div>
@@ -231,13 +232,14 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 					<button class="close" data-dismiss="modal"><span>&times;</span></button>
 				</div>
 				<div class="modal-body">
-					<form action="" method="post">
+					<form action="organ.php" method="post">
 						<div class="form-group">
 
 							<input type="hidden" name="name" class="form-control" value="<?php echo $_SESSION['name'] ?>">
 							<input type="hidden" name="phone_number" value="<?php echo $_SESSION['phone_number'] ?>">
 							<input type="hidden" name="gender" value="<?php echo $_SESSION['gender'] ?>">
 							<input type="hidden" name="blood" value="<?php echo $_SESSION['blood'] ?>">
+							<input type="hidden" name="status" value="0">
 
 						</div>
 						<div class="form-group">
@@ -246,14 +248,13 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 						</div>
 						<div class="form-group">
 							<label>Reason For Application (Less than 10 words)</label>
-							<textarea name="application_reason" maxlength="20" class="form-control" required></textarea>
+							<textarea name="application_reason" maxlength="20" class="form-control" id = "application_reason" required></textarea>
 
 						</div>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-danger btn-sm" style="border-radius:0%;" data-dismiss="modal">Close</button>
-					<input type="hidden" name="status" value="0">
-					<input type="submit" class="btn btn-success btn-sm" style="border-radius:0%;" name="apply" value="Apply">
+					<button type="submit" class="btn btn-success btn-sm" style="border-radius:0%;" name="apply">Apply</button>
 				</div>
 				</form>
 			</div>
@@ -556,7 +557,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 						</thead>
 						<tbody>
 							<?php
-							$sql = "SELECT * FROM prescription WHERE ( ordered = '' OR ordered = 0 ) AND  phone ='" . $_SESSION['phone_number'] . "'";
+							$sql = "SELECT * FROM prescription WHERE ( ordered IS NULL OR ordered = 0 ) AND  phone ='" . $_SESSION['phone_number'] . "'";
 							$que = mysqli_query($con, $sql);
 
 
@@ -592,7 +593,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 											<input type="hidden" name="prescription" value="<?php echo $result['prescription'] ?>">
 
 
-											<input type="submit" value="REDIRECT TO ORDER PAGE" name="rorder" class="btn btn-outline-primary btn-sm" style="border: radius 5px;position: center;">
+											<input type="submit" value="ORDER MED" name="rorder" class="btn btn-outline-primary btn-sm" style="border: radius 5px;position: center;">
 									</form>
 
 
@@ -637,7 +638,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 						</thead>
 						<tbody>
 							<?php
-							$sql = "SELECT * FROM ordermedicine WHERE ( orderstatus = 1 or orderstatus = 0) AND userResponse = 0 AND patientPhone ='" . $_SESSION['phone_number'] . "' ORDER BY application_id ASC";
+							$sql = "SELECT * FROM ordermedicine WHERE ( orderstatus = '1' or orderstatus = '0') AND userResponse = '0' AND patientPhone ='" . $_SESSION['phone_number'] . "' ORDER BY application_id ASC";
 							$que = mysqli_query($con, $sql);
 							$cnt = 1;
 							while ($result = mysqli_fetch_assoc($que)) {
@@ -737,7 +738,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 						</thead>
 						<tbody>
 							<?php
-							$sql = "SELECT * FROM ordermedicine WHERE orderstatus = 0 AND commentexist = 1 AND usercommentexist = '' AND patientPhone ='" . $_SESSION['phone_number'] . "' ORDER BY application_id ASC";
+							$sql = "SELECT * FROM ordermedicine WHERE orderstatus = '0' AND commentexist = '1' AND usercommentexist IS NULL AND patientPhone ='" . $_SESSION['phone_number'] . "' ORDER BY application_id ASC";
 							$que = mysqli_query($con, $sql);
 							$cnt = 1;
 							while ($result = mysqli_fetch_assoc($que)) {
@@ -866,38 +867,24 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 	<script src="js/jquery.min.js"></script>
 	<script src="js/tether.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+
+
+	<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+	
+
+	
+
+
+
+	
+
 	<script>
 		CKEDITOR.replace('application_reason');
 	</script>
+
+
 </body>
 
 </html>
-<?php
-if (isset($_POST['apply'])) {
-	$name = $_POST['name'];
-	$phone_number = $_POST['phone_number'];
-	$gender = $_POST['gender'];
-	$blood = $_POST['blood'];
-	$application_date = $_POST['application_date'];
-	$application_reason = $_POST['application_reason'];
-	$status = $_POST['status'];
 
-	$sql = "INSERT INTO organ(name,phone_number,gender,blood,application_date,application_reason,status)VALUES('$name','$phone_number','$gender','$blood','$application_date','$application_reason','$status')";
-
-	$run = mysqli_query($con, $sql);
-
-	if ($run == true) {
-
-		echo "<script> 
-					alert('Applied successfully, Please wait for approval status');
-					window.open('dashboard.php','_self');
-				  </script>";
-	} else {
-		echo "<script> 
-			alert('Failed To Apply');
-			</script>";
-	}
-}
-
-?>

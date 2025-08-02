@@ -42,61 +42,14 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h3><i class="fa-sharp fa-solid fa-user"></i> User Order Medicine Dashboard</h3>
+					<h3><i class="fa-solid fa-bag-shopping"></i> Order Medicine</h3>
 				</div>
 			</div>
 		</div>
 	</header>
 	<!--This is section-->
 
-	<!-- <section id="sections" class="py-4 mb-4 bg-faded">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-3">
-					<a href="#" class="btn btn-info btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#myInformation"><i class="fa-solid fa-circle-info"></i> My Information</a>
-				</div>
-				<div class="col-md-3">
-					<a href="#" class="btn btn-primary btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#addPostModal"><i class="fa-sharp fa-solid fa-plus"></i> Apply For Organ</a>
-				</div>
-				<div class="col-md-3">
-					<a href="#" class="btn btn-warning btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#addCateModal"><i class="fa-sharp fa-solid fa-spinner"></i> Pendings</a>
-				</div>
-				<div class="col-md-3">
-					<a href="#" class="btn btn-success btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#approveModal"><i class="fa-solid fa-thumbs-up"></i> Approved Applications</a>
-				</div>
-				<br><br>
-
-				<div class="col-md-3">
-					<a href="#" class="btn btn-danger btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#rejectModal"><i class="fa-solid fa-skull-crossbones"></i> Rejected Applications</a>
-				</div>
-
-				<div class="col-md-3">
-					<a href="#" class="btn btn-primary btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#myprescription"><i class="fa-sharp fa-solid fa-prescription"></i> My Prescription</a>
-				</div>
-
-
-				<div class="col-md-3">
-					<a href="#" class="btn btn-success btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#ordermedicine"><i class="fa-solid fa-cart-shopping"></i> Order Medicine</a>
-				</div>
-
-				<div class="col-md-3">
-					<a href="#" class="btn btn-warning btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#orderstatus"><i class="fa-sharp fa-solid fa-arrows-spin"></i> Madicine Order Status</a>
-				</div>
-
-				<br><br>
-
-				<div class="col-md-3">
-					<a href="#" class="btn btn-info btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#pharmacistcomment"><i class="fa-solid fa-comment"></i> Pharmacist Comment</a>
-				</div>
-				
-				<div class="col-md-3">
-					<a href="#" class="btn btn-primary btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#orderDelivery"><i class="fa-solid fa-truck"></i> Order Delivery Status</a>
-				</div>
-
-			</div>
-
-	</section> -->
+	
 	<!----Section2 for showing Post Model ---->
 	<br>
 	<section id="post">
@@ -104,10 +57,10 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 			<div class="row">
 
 				<div class="card" style=" width: 35rem; display: flex;align-items: center;justify-content: center;">
-					<img src="../users/images/prescription.jpg" style="height: 400px;" class="card-img-top" alt="...">
+					
 					<div class="card-body">
 						<h3 class="card-title">Your Prescription</h3>
-						<p class="card-text">Here is your prescription.Write medicine name and quantity accordingly.You can copy paste name from prescription.</p>
+						<p class="card-text">Your prescription is provided below.Order medicine by writing name and quantity accordingly.</p>
 
 						<table class="table table-bordered table-hover table-striped">
 							<thead>
@@ -288,7 +241,7 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<!-- <p class="lead">&copy; <?php echo date("Y") ?> </p> -->
+				<p style = "color: #CCCCFF; font-weight: bold;" >&copy; Kawser Ahmad, <?php echo date("Y");?></P>
 				</div>
 			</div>
 		</div>
@@ -349,238 +302,9 @@ if (isset($_SESSION['name']) && isset($_SESSION['phone_number']) && isset($_SESS
 
 
 
-	<!-- Request For organ -->
-
-	<div class="modal fade" id="addPostModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-primary text-white">
-					<div class="modal-title">
-						<h5>Request for organ</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<form action="" method="post">
-						<div class="form-group">
-
-							<input type="hidden" name="name" class="form-control" value="<?php echo $_SESSION['name'] ?>">
-							<input type="hidden" name="phone_number" value="<?php echo $_SESSION['phone_number'] ?>">
-							<input type="hidden" name="gender" value="<?php echo $_SESSION['gender'] ?>">
-							<input type="hidden" name="blood" value="<?php echo $_SESSION['blood'] ?>">
-
-						</div>
-						<div class="form-group">
-							<label class="form-control-label">Application Date</label>
-							<input type="date" name="application_date" class="form-control"    />
-						</div>
-						<div class="form-group">
-							<label>Reason For Application (Less than 10 words)</label>
-							<textarea name="application_reason" maxlength="20" class="form-control"   ></textarea>
-
-						</div>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-danger btn-sm" style="border-radius:0%;" data-dismiss="modal">Close</button>
-					<input type="hidden" name="status" value="0">
-					<input type="submit" class="btn btn-success btn-sm" style="border-radius:0%;" name="apply" value="Apply">
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 
 
-	<!--Pending Applications-->
-	<div class="modal fade" id="addCateModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-warning text-white">
-					<div class="modal-title">
-						<h5>Pending Applications</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<th>#</th>
-							<th>Name</th>
-							<th>Phone Number</th>
-							<th>Gender</th>
-							<th>Blood Group</th>
-							<th>Application Date</th>
-
-							<th>Application Status</th>
-						</thead>
-						<tbody>
-							<?php
-							$sql = "SELECT * FROM organ WHERE status = 0 && phone_number='" . $_SESSION['phone_number'] . "'";
-							$que = mysqli_query($con, $sql);
-							$cnt = 1;
-							while ($result = mysqli_fetch_assoc($que)) {
-							?>
-
-
-								<tr>
-									<td><?php echo $cnt; ?></td>
-									<td><?php echo $result['name']; ?></td>
-									<td><?php echo $result['phone_number']; ?></td>
-									<td><?php echo $result['gender']; ?></td>
-									<td><?php echo $result['blood']; ?></td>
-									<td><?php $timestamp = strtotime($result['application_date']);
-										echo date('d/m/Y', $timestamp); ?></td>
-
-									<td>
-									<?php
-									if ($result['status'] == 0) {
-										echo "<span class='badge badge-warning'>Pending</span>";
-									} else if ($result['status'] == 1) {
-										echo "<span class='badge badge-success'>Approved</span>";
-									}
-									$cnt++;
-								}
-									?>
-									</td>
-								</tr>
-
-						</tbody>
-					</table>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-
-
-	<!-- User Modal -->
-	<div class="modal fade" id="approveModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content" style="width:850px;position: left-centered;">
-				<div class="modal-header bg-success text-white">
-					<div class="modal-title">
-						<h5>Approved Applications</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<th>#</th>
-
-							<th>Name</th>
-							<th>Phone Number</th>
-							<th>Gender</th>
-							<th>Application Id</th>
-							<th>Application Date</th>
-							<th>Doctor Information</th>
-
-
-							<th>Status</th>
-						</thead>
-						<tbody>
-							<?php
-							$sql = "SELECT * FROM organ WHERE status = 1 AND phone_number='" . $_SESSION['phone_number'] . "'";
-							$que = mysqli_query($con, $sql);
-							$cnt = 1;
-							while ($result = mysqli_fetch_assoc($que)) {
-							?>
-
-
-								<tr>
-									<td><?php echo $cnt; ?></td>
-
-									<td><?php echo $result['name']; ?></td>
-									<td><?php echo $result['phone_number']; ?></td>
-									<td><?php echo $result['gender']; ?></td>
-									<td><?php echo $result['id']; ?></td>
-									<td><?php $timestamp = strtotime($result['application_date']);
-										echo date('d/m/Y', $timestamp); ?></td>
-
-									<td><?php echo nl2br($result['doctor_info']); ?></td> <!-- Fetch with next line -->
-									<td>
-									<?php
-									if ($result['status'] == 0) {
-										echo "<span class='badge badge-warning'>Pending</span>";
-									} else {
-										echo "<span class='badge badge-success'>Approved</span>";
-									}
-									$cnt++;
-								}
-									?>
-									</td>
-								</tr>
-
-						</tbody>
-					</table>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Rejected Modal -->
-	<div class="modal fade" id="rejectModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-danger text-white">
-					<div class="modal-title">
-						<h5>Rejected Applications</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<th>#</th>
-							<th>Name</th>
-							<th>Phone Number</th>
-							<th>Gender</th>
-							<th>Blood Group</th>
-							<th>Application Date</th>
-
-							<th>Status</th>
-						</thead>
-						<tbody>
-							<?php
-							$sql = "SELECT * FROM organ WHERE status = 2 AND phone_number='" . $_SESSION['phone_number'] . "'";
-							$que = mysqli_query($con, $sql);
-							$cnt = 1;
-							while ($result = mysqli_fetch_assoc($que)) {
-							?>
-
-
-								<tr>
-									<td><?php echo $cnt; ?></td>
-									<td><?php echo $result['name']; ?></td>
-									<td><?php echo $result['phone_number']; ?></td>
-									<td><?php echo $result['gender']; ?></td>
-									<td><?php echo $result['blood']; ?></td>
-									<td><?php $timestamp = strtotime($result['application_date']);
-										echo date('d/m/Y', $timestamp); ?></td>
-
-									<td>
-									<?php
-									if ($result['status'] == 0) {
-										echo "<span class='badge badge-warning'>Pending</span>";
-									} else if ($result['status'] == 2) {
-										echo "<span class='badge badge-danger'>Rejected</span>";
-									}
-									$cnt++;
-								}
-									?>
-									</td>
-								</tr>
-
-						</tbody>
-					</table>
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 
 

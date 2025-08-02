@@ -1,5 +1,5 @@
 <?php
-include('inc/head.php');
+include('inc/config.php');
 session_start();
 
 if (isset($_SESSION['name']) && isset($_SESSION['phone']) && isset($_POST['delivered']) && isset($_POST['orderId']) ) {
