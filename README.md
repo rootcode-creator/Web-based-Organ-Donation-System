@@ -1,21 +1,46 @@
-# web-based-organ-donation-system — README
+<h1 align="center">web-based-organ-donation-system</h1>
+
+<p align="center"><i>Role-based organ donation workflow app powered by PHP, MySQL, Bootstrap, and jQuery.</i></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/VERSION-1.0.0-E11D48?style=for-the-badge&logo=semanticrelease&logoColor=white&labelColor=7F1D1D" alt="Version 1.0.0" />
+  <img src="https://img.shields.io/badge/LICENSE-MIT-84CC16?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=14532D" alt="MIT License" />
+  <img src="https://img.shields.io/badge/TYPE-ORGAN%20DONATION-8B5CF6?style=for-the-badge&labelColor=4C1D95" alt="Organ donation app" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-7.4+-14B8A6?style=for-the-badge&logo=php&logoColor=white&labelColor=0F766E" alt="PHP" />
+  <img src="https://img.shields.io/badge/MYSQL-DATABASE-06B6D4?style=for-the-badge&logo=mysql&logoColor=white&labelColor=155E75" alt="MySQL" />
+  <img src="https://img.shields.io/badge/BOOTSTRAP-UI-3B82F6?style=for-the-badge&logo=bootstrap&logoColor=white&labelColor=1E3A8A" alt="Bootstrap" />
+  <img src="https://img.shields.io/badge/JQUERY-FRONTEND-6366F1?style=for-the-badge&logo=jquery&logoColor=white&labelColor=4338CA" alt="jQuery" />
+  <img src="https://img.shields.io/badge/APACHE-SERVER-0EA5E9?style=for-the-badge&logo=apache&logoColor=white&labelColor=1E40AF" alt="Apache" />
+</p>
+
+<p align="center">
+  <a href="#-project-intro"><img src="https://img.shields.io/badge/EXPLORE-PROJECT%20INTRO-6366F1?style=for-the-badge&logo=gitbook&logoColor=white&labelColor=4F46E5" alt="Project intro" /></a>
+  <a href="#-install-methods"><img src="https://img.shields.io/badge/SETUP-INSTALL%20GUIDE-14B8A6?style=for-the-badge&logo=readme&logoColor=white&labelColor=0F766E" alt="Install guide" /></a>
+  <a href="#-entry-points"><img src="https://img.shields.io/badge/OPEN-ENTRY%20POINTS-A855F7?style=for-the-badge&logo=files&logoColor=white&labelColor=7E22CE" alt="Entry points" /></a>
+</p>
+
+## web-based-organ-donation-system — README
 
 Role-based PHP/MySQL web application for organ request management, doctor review, admin approval workflow, and prescription-to-medicine fulfillment.
 
 ## Table of Contents
-- 🚀 Project intro
-- 📁 Project structure
-- ⭐ Differentiators
-- 🔧 Features
-- 🧰 Tech stack
-- ⚙️ Install methods
-  - 📦 XAMPP / WAMP / LAMP (Apache + PHP + MySQL)
-- 🔐 Configuration
-- 🗄️ Database structure
-- 📜 Entry points
-- 🚀 Deployment notes
-- 🤝 Contributing
-- 📄 License
+
+- [🚀 Project intro](#-project-intro)
+- [📁 Project structure](#-project-structure)
+- [⭐ Differentiators](#-differentiators)
+- [🔧 Features](#-features)
+- [🧰 Tech stack](#-tech-stack)
+- [⚙️ Install methods](#-install-methods)
+  - [📦 XAMPP / WAMP / LAMP (Apache + PHP + MySQL)](#-xampp--wamp--lamp-apache--php--mysql)
+- [🔐 Configuration](#-configuration)
+- [🗄️ Database structure](#-database-structure)
+- [📜 Entry points](#-entry-points)
+- [🚀 Deployment notes](#-deployment-notes)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
 ## 🚀 Project intro
 
@@ -31,7 +56,7 @@ It is designed as an academic/project-friendly foundation for organ donation and
 
 ## 📁 Project structure
 
-```text
+```txt
 Web-based-Organ-Donation-System/
 ├── index.html
 ├── style.css
@@ -90,8 +115,8 @@ Web-based-Organ-Donation-System/
 
 ### Core features
 
-| Feature | Status | Details |
-|---|---|---|
+| Feature | Status | Notes |
+| --- | --- | --- |
 | User authentication | ✅ Current | Signup/signin/logout for users |
 | Admin authentication | ✅ Current | Admin account management and dashboard access |
 | Doctor authentication | ✅ Current | Doctor signup/signin and assigned application view |
@@ -104,20 +129,20 @@ Web-based-Organ-Donation-System/
 | Medicine order flow | ✅ Current | Users place orders from prescriptions |
 | Pharmacy operations | ✅ Current | Stock updates, pricing, comments, delivery updates |
 
-### Role protection behavior
+### Route protection behavior
 
 - Public entry: `/index.html`
-- Admin routes: under `/admins/*` (requires admin session)
-- User routes: under `/users/*` (requires user session)
-- Doctor routes: under `/doctors/*` (requires doctor session)
-- Pharmacist routes: under `/pharmacist/*` (requires pharmacist session)
+- Admin routes: `/admins/*` (requires admin session)
+- User routes: `/users/*` (requires user session)
+- Doctor routes: `/doctors/*` (requires doctor session)
+- Pharmacist routes: `/pharmacist/*` (requires pharmacist session)
 
 ## 🧰 Tech stack
 
-- Backend: PHP (procedural style with mysqli)
-- Database: MySQL / MariaDB
-- Frontend: HTML, CSS, Bootstrap, JavaScript, jQuery
-- Hosting target: Apache + PHP runtime (XAMPP/WAMP/LAMP compatible)
+- **Backend:** PHP (procedural style with mysqli)
+- **Database:** MySQL / MariaDB
+- **Frontend:** HTML, CSS, Bootstrap, JavaScript, jQuery
+- **Hosting target:** Apache + PHP runtime (XAMPP/WAMP/LAMP compatible)
 
 ## ⚙️ Install methods
 
@@ -134,14 +159,19 @@ git clone https://github.com/rootcode-creator/Web-based-Organ-Donation-System.gi
 cd Web-based-Organ-Donation-System
 ```
 
-1. Copy project into your web root (`htdocs` / `www`).
-2. Create/import the MySQL database schema used by this project.
-3. Configure database connection in each role config file:
-   - `admins/inc/config.php`
-   - `doctors/inc/config.php`
-   - `pharmacist/inc/config.php`
-4. Start Apache + MySQL.
-5. Open `http://localhost/Web-based-Organ-Donation-System/`.
+1) Copy project into your web root (`htdocs` / `www`).
+
+2) Create/import the MySQL database schema used by this project.
+
+3) Configure database connection in each role config file:
+
+- `admins/inc/config.php`
+- `doctors/inc/config.php`
+- `pharmacist/inc/config.php`
+
+4) Start Apache + MySQL.
+
+5) Open `http://localhost/Web-based-Organ-Donation-System/`.
 
 ## 🔐 Configuration
 
@@ -154,10 +184,10 @@ $dbPassword = "your_db_password";
 $dbName = "your_db_name";
 ```
 
-Important notes:
+Notes:
 
-- Keep the three role config files synchronized.
-- Do not commit real production credentials.
+- Keep all role config files synchronized.
+- Never commit real production credentials.
 - Rotate any exposed credentials before deployment.
 
 ## 🗄️ Database structure
@@ -174,7 +204,7 @@ Main tables used in codebase:
 - `ordermedicine`
 - `stockmedicine`
 
-Typical relationships/workflow:
+Typical workflow:
 
 - `users` submit to `organ`
 - `admins` assign doctor (`organ.doctor_info`) and set application status
@@ -195,14 +225,14 @@ Typical relationships/workflow:
 - Ensure all module-level `config.php` files point to the same database.
 - Use HTTPS and secure session settings in production.
 - Add server-side validation/sanitization hardening before public deployment.
-- Migrate credentials from source files to environment variables for safer operations.
+- Move credentials from source files to environment variables for safer operations.
 
 ## 🤝 Contributing
 
 - Fork the repository and create a focused feature branch.
-- Keep pull requests scoped and include test/verification steps.
-- Avoid committing credentials, secrets, or production config.
+- Keep pull requests scoped and include verification steps.
+- Never commit credentials, secrets, or production config.
 
 ## 📄 License
 
-This repository includes a `LICENSE` file. See that file for licensing terms.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
