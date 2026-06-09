@@ -1,0 +1,18 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organ donation icon">
+  <defs>
+    <linearGradient id="organGradient" x1="30" y1="20" x2="130" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ef4444"/>
+      <stop offset="1" stop-color="#b91c1c"/>
+    </linearGradient>
+    <linearGradient id="shineGradient" x1="52" y1="42" x2="100" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fecaca" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="144" height="144" rx="36" fill="#fff7ed"/>
+  <path d="M80 133C80 133 31 104.5 31 63.5C31 48.2 42.9 36 58.1 36C67.7 36 75.8 40.9 80 48.2C84.2 40.9 92.3 36 101.9 36C117.1 36 129 48.2 129 63.5C129 104.5 80 133 80 133Z" fill="url(#organGradient)"/>
+  <path d="M58 50C51 50 45 56 45 63.5C45 92.5 70.5 111 80 117.5C79 98 76.5 80.5 73 69.5C69.9 59.8 64.8 50 58 50Z" fill="url(#shineGradient)"/>
+  <path d="M80 48.2C84.2 40.9 92.3 36 101.9 36C117.1 36 129 48.2 129 63.5C129 104.5 80 133 80 133C80 133 31 104.5 31 63.5C31 48.2 42.9 36 58.1 36C67.7 36 75.8 40.9 80 48.2Z" stroke="#7f1d1d" stroke-opacity="0.28" stroke-width="4"/>
+  <path d="M80 58V102" stroke="#fff7ed" stroke-width="7" stroke-linecap="round"/>
+  <path d="M58 80H102" stroke="#fff7ed" stroke-width="7" stroke-linecap="round"/>
+</svg>

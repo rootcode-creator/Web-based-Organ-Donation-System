@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./Image/organ.svg" alt="Organ donation icon" width="96" height="96" />
+</p>
+
 <h1 align="center">web-based-organ-donation-system</h1>
 
 <p align="center"><i>Role-based organ donation workflow app powered by PHP, MySQL, Bootstrap, and jQuery.</i></p>
@@ -32,6 +36,7 @@ Role-based PHP/MySQL web application for organ request management, doctor review
 - [📁 Project structure](#-project-structure)
 - [⭐ Differentiators](#-differentiators)
 - [🔧 Features](#-features)
+  - [🧭 Flow diagrams](#-flow-diagrams)
 - [🧰 Tech stack](#-tech-stack)
 - [⚙️ Install methods](#-install-methods)
   - [📦 XAMPP / WAMP / LAMP (Apache + PHP + MySQL)](#-xampp--wamp--lamp-apache--php--mysql)
@@ -128,6 +133,81 @@ Web-based-Organ-Donation-System/
 | Prescription flow | ✅ Current | Doctors create prescriptions for approved cases |
 | Medicine order flow | ✅ Current | Users place orders from prescriptions |
 | Pharmacy operations | ✅ Current | Stock updates, pricing, comments, delivery updates |
+
+### 🧭 Flow diagrams
+
+#### 1) End-to-end application journey
+
+```mermaid
+flowchart TD
+  A[Visitor] --> B[Landing page]
+  B --> C{Has account?}
+  C -- No --> D[Register]
+  D --> E[Login]
+  C -- Yes --> E
+  E --> F[User dashboard]
+  F --> G[Submit organ request]
+  G --> H[Admin reviews request]
+  H --> I{Doctor assigned?}
+  I -- No --> H
+  I -- Yes --> J[Doctor reviews case]
+  J --> K[Admin approve or reject]
+  K -- Reject --> L[Notify user]
+  K -- Approve --> M[Create prescription]
+  M --> N[User places medicine order]
+  N --> O[Pharmacist processes order]
+  O --> P[Update delivery status]
+  P --> L
+```
+
+#### 2) User request flow
+
+```mermaid
+flowchart TD
+  A[User signs in] --> B[Open organ request form]
+  B --> C[Fill personal and request details]
+  C --> D[Submit request]
+  D --> E[Track application status]
+  E --> F{Approved?}
+  F -- No --> G[Wait for admin or doctor action]
+  F -- Yes --> H[View prescription]
+  H --> I[Order required medicine]
+  I --> J[Track delivery]
+```
+
+#### 3) Admin, doctor, and pharmacy workflow
+
+```mermaid
+flowchart TD
+  A[Admin dashboard] --> B[View pending applications]
+  B --> C[Assign doctor]
+  C --> D[Doctor accepts case]
+  D --> E[Doctor adds recommendation]
+  E --> F{Admin decision}
+  F -- Reject --> G[Delete or close application]
+  F -- Approve --> H[Generate prescription]
+  H --> I[Pharmacist updates stock and price]
+  I --> J[Process medicine order]
+  J --> K[Update delivery status]
+  K --> L[User receives completion notice]
+```
+
+#### 4) Route access control flow
+
+```mermaid
+flowchart TD
+  A[Request enters app] --> B{Authenticated?}
+  B -- No --> C[Send to public pages]
+  B -- Yes --> D{Role}
+  D -- User --> E[/users/* routes/]
+  D -- Doctor --> F[/doctors/* routes/]
+  D -- Admin --> G[/admins/* routes/]
+  D -- Pharmacist --> H[/pharmacist/* routes/]
+  E --> I[User dashboard and organ flow]
+  F --> J[Doctor assignment and prescription flow]
+  G --> K[Admin moderation and assignment flow]
+  H --> L[Inventory and delivery flow]
+```
 
 ### Route protection behavior
 
